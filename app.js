@@ -1,5 +1,5 @@
 //
-const port = 3000;
+
 const express = require(`express`);
 const app = express();
 const mongoose = require(`mongoose`);
@@ -155,6 +155,12 @@ app.post(`/work`, function (req, res) {
 	workItems.push(item);
 	res.redirect(`/work`);
 });
+
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
 app.listen(port, function (req, res) {
 	console.log(`App running on port: ${port}`);
